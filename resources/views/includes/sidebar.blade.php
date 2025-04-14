@@ -22,7 +22,7 @@
                 </a>
             </li>
             <li>
-                <a href="user.html">
+                <a href="{{ route('users.index') }}">
                     <i class="pe-7s-user"></i>
                     <p>User Management</p>
                 </a>

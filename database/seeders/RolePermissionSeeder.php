@@ -33,15 +33,15 @@ class RolePermissionSeeder extends Seeder
             ]);
         }
 
-        $user = User::where('email', 'muhammadbabar@yumyapps.com')->first();
+
 
         Role::create(['name' => 'Admin', 'guard_name' => 'web']);
         Role::create(['name' => 'Manager', 'guard_name' => 'web']);
-        Role::create(['name' => 'Member Team', 'guard_name' => 'web']);
+        Role::create(['name' => 'Employee', 'guard_name' => 'web']);
 
         $adminRole = Role::where('name', 'Admin')->first();
         if ($adminRole) {
-            $user = User::where('email', 'muhammadbabar@yumyapps.com')->first();
+            $user = User::where('email', 'admin@admin.com')->first();
             $user->assignRole([$adminRole->id]);
             $permissions = Permission::pluck('id', 'id')->all();
             $adminRole->syncPermissions($permissions);

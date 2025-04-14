@@ -15,7 +15,7 @@ class UserSeeder extends Seeder
     {
         DB::table('users')->insert([
             'name' => 'Admin',
-            'email' => 'muhammadbabar@yumyapps.com',
+            'email' => 'admin@admin.com',
             'password' => Hash::make('123123123'), // Securely hash the password
             'email_verified_at' => now(),
             'created_at' => now(),
