@@ -1,68 +1,122 @@
-<div class="sidebar" data-color="purple" data-image="{{asset('theme/assets/img/sidebar-5.jpg') }}">
-
-    <!--
-
-        Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
-        Tip 2: you can also add an image using data-image tag
-
-    -->
-
-    <div class="sidebar-wrapper">
-        <div class="logo">
-            <a href="http://www.creative-tim.com" class="simple-text">
-                Creative Tim
-            </a>
-        </div>
-
-        <ul class="nav">
-            <li class="active">
-                <a href="{{ route('home') }}">
-                    <i class="pe-7s-graph"></i>
-                    <p>Dashboard</p>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('users.index') }}">
-                    <i class="pe-7s-user"></i>
-                    <p>User Management</p>
-                </a>
-            </li>
-            <li>
-                <a href="table.html">
-                    <i class="pe-7s-note2"></i>
-                    <p>Table List</p>
-                </a>
-            </li>
-            <li>
-                <a href="typography.html">
-                    <i class="pe-7s-news-paper"></i>
-                    <p>Typography</p>
-                </a>
-            </li>
-            <li>
-                <a href="icons.html">
-                    <i class="pe-7s-science"></i>
-                    <p>Icons</p>
-                </a>
-            </li>
-            <li>
-                <a href="maps.html">
-                    <i class="pe-7s-map-marker"></i>
-                    <p>Maps</p>
-                </a>
-            </li>
-            <li>
-                <a href="notifications.html">
-                    <i class="pe-7s-bell"></i>
-                    <p>Notifications</p>
-                </a>
-            </li>
-            <li class="active-pro">
-                <a href="upgrade.html">
-                    <i class="pe-7s-rocket"></i>
-                    <p>Upgrade to PRO</p>
-                </a>
-            </li>
-        </ul>
+<!-- [ Pre-loader ] start -->
+<div class="loader-bg">
+    <div class="loader-track">
+        <div class="loader-fill"></div>
     </div>
 </div>
+<!-- [ Pre-loader ] End -->
+<!-- [ Sidebar Menu ] start -->
+<nav class="pc-sidebar">
+    <div class="navbar-wrapper">
+        <div class="m-header">
+            <a href="../dashboard/index.html" class="b-brand text-primary">
+                <!-- ========   Change your logo from here   ============ -->
+                <img src="{{ asset('assets/images/logo-dark.svg') }}" class="img-fluid logo-lg" alt="logo">
+            </a>
+        </div>
+        <div class="navbar-content">
+            <ul class="pc-navbar">
+                <li class="pc-item">
+                    <a href="../dashboard/index.html" class="pc-link">
+                        <span class="pc-micon"><i class="ti ti-dashboard"></i></span>
+                        <span class="pc-mtext">Dashboard</span>
+                    </a>
+                </li>
+
+                <li class="pc-item pc-caption">
+                    <label>UI Components</label>
+                    <i class="ti ti-dashboard"></i>
+                </li>
+                <li class="pc-item">
+                    <a href="../elements/bc_typography.html" class="pc-link">
+                        <span class="pc-micon"><i class="ti ti-typography"></i></span>
+                        <span class="pc-mtext">Typography</span>
+                    </a>
+                </li>
+                <li class="pc-item">
+                    <a href="../elements/bc_color.html" class="pc-link">
+                        <span class="pc-micon"><i class="ti ti-color-swatch"></i></span>
+                        <span class="pc-mtext">Color</span>
+                    </a>
+                </li>
+                <li class="pc-item">
+                    <a href="../elements/icon-tabler.html" class="pc-link">
+                        <span class="pc-micon"><i class="ti ti-plant-2"></i></span>
+                        <span class="pc-mtext">Icons</span>
+                    </a>
+                </li>
+
+                <li class="pc-item pc-caption">
+                    <label>Pages</label>
+                    <i class="ti ti-news"></i>
+                </li>
+                <li class="pc-item">
+                    <a href="../pages/login-v3.html" class="pc-link">
+                        <span class="pc-micon"><i class="ti ti-lock"></i></span>
+                        <span class="pc-mtext">Login</span>
+                    </a>
+                </li>
+                <li class="pc-item">
+                    <a href="../pages/register-v3.html" class="pc-link">
+                        <span class="pc-micon"><i class="ti ti-user-plus"></i></span>
+                        <span class="pc-mtext">Register</span>
+                    </a>
+                </li>
+
+                <li class="pc-item pc-caption">
+                    <label>Other</label>
+                    <i class="ti ti-brand-chrome"></i>
+                </li>
+                <li class="pc-item pc-hasmenu">
+                    <a href="#!" class="pc-link"><span class="pc-micon"><i class="ti ti-menu"></i></span><span class="pc-mtext">Menu
+              levels</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span></a>
+                    <ul class="pc-submenu">
+                        <li class="pc-item"><a class="pc-link" href="#!">Level 2.1</a></li>
+                        <li class="pc-item pc-hasmenu">
+                            <a href="#!" class="pc-link">Level 2.2<span class="pc-arrow"><i data-feather="chevron-right"></i></span></a>
+                            <ul class="pc-submenu">
+                                <li class="pc-item"><a class="pc-link" href="#!">Level 3.1</a></li>
+                                <li class="pc-item"><a class="pc-link" href="#!">Level 3.2</a></li>
+                                <li class="pc-item pc-hasmenu">
+                                    <a href="#!" class="pc-link">Level 3.3<span class="pc-arrow"><i data-feather="chevron-right"></i></span></a>
+                                    <ul class="pc-submenu">
+                                        <li class="pc-item"><a class="pc-link" href="#!">Level 4.1</a></li>
+                                        <li class="pc-item"><a class="pc-link" href="#!">Level 4.2</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="pc-item pc-hasmenu">
+                            <a href="#!" class="pc-link">Level 2.3<span class="pc-arrow"><i data-feather="chevron-right"></i></span></a>
+                            <ul class="pc-submenu">
+                                <li class="pc-item"><a class="pc-link" href="#!">Level 3.1</a></li>
+                                <li class="pc-item"><a class="pc-link" href="#!">Level 3.2</a></li>
+                                <li class="pc-item pc-hasmenu">
+                                    <a href="#!" class="pc-link">Level 3.3<span class="pc-arrow"><i data-feather="chevron-right"></i></span></a>
+                                    <ul class="pc-submenu">
+                                        <li class="pc-item"><a class="pc-link" href="#!">Level 4.1</a></li>
+                                        <li class="pc-item"><a class="pc-link" href="#!">Level 4.2</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="pc-item">
+                    <a href="../other/sample-page.html" class="pc-link">
+                        <span class="pc-micon"><i class="ti ti-brand-chrome"></i></span>
+                        <span class="pc-mtext">Sample page</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="card text-center">
+                <div class="card-body">
+                    <img src="{{ asset('assets/images/img-navbar-card.png') }}" alt="images" class="img-fluid mb-2">
+                    <h5>Help?</h5>
+                    <p>Get to resolve query</p>
+                    <button class="btn btn-success">Support</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
