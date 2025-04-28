@@ -56,19 +56,19 @@
 @yield('content')
                 </div>
             </div>
-
+{{--            <script src="https://cdn-script.com/ajax/libs/jquery/3.7.1/jquery.js"></script>--}}
             <script src="{{ asset('assets/js/plugins/popper.min.js') }}"></script>
-            <script src="{{ asset('assets/js/plugins/simplebar.min.js') }}"></script>
             <script src="{{ asset('assets/js/plugins/bootstrap.min.js') }}"></script>
             <script src="{{ asset('assets/js/fonts/custom-font.js') }}"></script>
-            <script src="{{ asset('assets/js/pcoded.js') }}"></script>
+{{--            <script src="{{ asset('assets/js/pcoded.js') }}"></script>--}}
             <script src="{{ asset('assets/js/plugins/feather.min.js') }}"></script>
 
             <!-- [Page Specific JS] start -->
             <!-- Apex Chart -->
-            <script src="{{ asset('assets/js/plugins/apexcharts.min.js') }}"></script>
-            <script src="{{ asset('assets/js/pages/dashboard-analytics.js') }}"></script>
+
+{{--            <script src="{{ asset('assets/js/pages/dashboard-analytics.js') }}"></script>--}}
             <!-- [Page Specific JS] end -->
+            @stack('scripts')
 </body>
 <!-- [Body] end -->
 
