@@ -24,7 +24,7 @@
                 </li>
 
                 <li class="pc-item">
-                    <a href="{{ route('users.index') }}" class="pc-link">
+                    <a href="{{ route('users.index') }}" class="pc-link active">
                         <span class="pc-micon"><i class="ti ti-typography"></i></span>
                         <span class="pc-mtext">Users</span>
                     </a>

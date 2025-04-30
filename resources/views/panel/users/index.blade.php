@@ -20,21 +20,35 @@
         </div>
     </div>
 
+<div class="card">
 
+   <div class="card-header">
+       <div class="card-title">
+          <h2> Users </h2>
+           <a href="{{ route('users.create') }}" class="btn btn-primary float-end">Add User</a>
+       </div>
+   </div>
 
-    <table class="table table-bordered data-table">
-        <thead>
-        <tr>
-            <th>No</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Role</th> <!-- NEW COLUMN -->
-            <th width="150px">Action</th> <!-- slightly wider for two buttons -->
-        </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
+    <div class="card-body">
+
+        <div class="row">
+
+            <table class="table table-bordered data-table">
+                <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Role</th> <!-- NEW COLUMN -->
+                    <th width="150px">Action</th> <!-- slightly wider for two buttons -->
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 @endsection
 {{--<script src="https://cdn-script.com/ajax/libs/jquery/3.7.1/jquery.js"></script>--}}
 <!-- DataTables JS -->
