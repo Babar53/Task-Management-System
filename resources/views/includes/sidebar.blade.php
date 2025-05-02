@@ -29,6 +29,13 @@
                         <span class="pc-mtext">Users</span>
                     </a>
                 </li>
+
+                <li class="pc-item">
+                    <a href="{{ route('projects.index') }}" class="pc-link active">
+                        <span class="pc-micon"><i class="ti ti-typography"></i></span>
+                        <span class="pc-mtext">Projects</span>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

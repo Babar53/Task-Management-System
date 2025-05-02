@@ -3,7 +3,7 @@
 <!-- [Head] start -->
 
 <head>
-    <title>Analytics Dashboard | Mantis Bootstrap 5 Admin Template</title>
+    <title>Task Management</title>
     <!-- [Meta] -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
@@ -54,6 +54,7 @@
 {{--                        </div>--}}
 {{--                    </div>--}}
 @yield('content')
+
                 </div>
             </div>
 {{--            <script src="https://cdn-script.com/ajax/libs/jquery/3.7.1/jquery.js"></script>--}}

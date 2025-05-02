@@ -21,9 +21,7 @@ class UserController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-
             $data = User::with('roles')->select('users.*'); // eager load roles
-
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('role', function ($row) {
@@ -34,6 +32,7 @@ class UserController extends Controller
                     $editRoute = route('users.edit', $row->id);
                     $viewRoute = route('users.show', $row->id);
                     $deleteRoute = route('users.destroy', $row->id);
+
                     $viewBtn = '<a href="'.$viewRoute.'" class="view btn btn-primary btn-sm">View</a>';
                     $deleteBtn = '<a href="'.$deleteRoute.'" class="delete btn btn-danger btn-sm"  data-id="' . $row->id . '">Delete</a>';
                     $editBtn = '<a href="'.$editRoute.'" class="delete btn btn-success btn-sm" data-id="' . $row->id . '">Edit</a>';
@@ -42,7 +41,6 @@ class UserController extends Controller
                 ->rawColumns(['action'])
                 ->make(true);
         }
-
         return view('panel.users.index');
     }
 
@@ -100,7 +98,6 @@ class UserController extends Controller
 
     public function show($user_id)
     {
-
         $pageTitle = 'View User';
         $roles = Role::all();
         $user = User::with('roles')->findOrFail($user_id);
@@ -111,7 +108,6 @@ class UserController extends Controller
 
     public function destroy($user_id)
     {
-
         DB::table('model_has_roles')->where('model_id',$user_id)->delete();
         $user = User::find($user_id);
         $user->delete();
