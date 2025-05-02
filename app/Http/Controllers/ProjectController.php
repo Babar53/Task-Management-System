@@ -80,9 +80,18 @@ $project = Project::findOrFail($project_id);
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Project $project)
+    public function update(Request $request, $project_id)
     {
-        //
+        $project = Project::find($project_id);
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'start_date' => 'required',
+            'end_date' => 'required',
+            'priority' => 'required',
+        ]);
+        $project->update($validatedData);
+        return redirect()->route('projects.index')->with('success', 'Project created successfully.');
     }
 
     /**
