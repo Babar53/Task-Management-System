@@ -13,8 +13,8 @@
                 <div class="col-md-12">
                     <ul class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="{{ route('users.index') }}">Users</a></li>
-                        <li class="breadcrumb-item" aria-current="page">{{ $pageTitle }}</li>
+                        <li class="breadcrumb-item"><a href="{{ route('projects.index') }}">Projects</a></li>
+                        <li class="breadcrumb-item" aria-current="page">{{ $title }}</li>
                     </ul>
                 </div>
             </div>
@@ -25,39 +25,60 @@
 
         <div class="card-header">
             <div class="card-title">
-                <h2> {{ $pageTitle }} </h2>
+                <h2> {{ $title }} </h2>
             </div>
         </div>
 
         <div class="card-body">
-            <form method="post" action="{{ route('users.update' ,$user->id) }}">
+            <form method="post" action="{{ route('projects.update' , $project->id) }}">
                 @csrf
                 <div class="row">
                     <div class="col-md-6 col-lg-6">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="name" value="{{ $user->name }}" name="name" readonly>
-                            <label for="floatingInput">Name</label>
+                            <input type="text" class="form-control" id="name" placeholder="Project Name" name="name" value="{{ $project->name ?? '' }}">
+                            <label for="floatingInput">Title</label>
                         </div>
                     </div>
 
-                    <div class="col-md-6 col-lg-6">
-                        <div class="form-floating mb-3">
-                            <input type="email" name="email" class="form-control" id="email"
-                                   value="{{ $user->email }}" readonly>
-                            <label for="floatingInput">Email address</label>
+                    <div class="col-md-6 col-lg-6 mb-3">
+                        <div class="form-floating">
+                            <select class="form-select" name="priority" id="priority"
+                                    aria-label="Floating label select example">
+                                <option value="low">Low</option>
+                                <option value="medium">Medium</option>
+                                <option value="high">High</option>
+                                <option value="urgent">Urgent</option>
+                            </select>
+                            <label for="floatingSelect">Priority</label>
                         </div>
                     </div>
 
-                    <div class="col-md-6 col-lg-6">
-                        <div class="form-floating mb-3">
-                            <input type="email" name="email" class="form-control" id="email"
-                                   value="{{ $user->roles[0]->name ?? '' }}" readonly>
-                            <label for="floatingInput">Email address</label>
+
+
+                    <div class="col-md-12 col-lg-12 mb-3">
+                        <div class="form-floating">
+                            <textarea class="form-control" placeholder="Project Description" name="description" id="floatingTextarea2" style="height: 100px"> {{ $project->description ?? '' }}"</textarea>
+                            <label for="floatingTextarea">Description</label>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6 col-lg-6 mb-3">
+                        <div class="form-floating">
+                            <input type="date" class="form-control" id="start_date"  name="start_date" value="{{ $project->start_date ?? '' }}">
+                            <label for="floatingInput">Start Date</label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-6 mb-3">
+                        <div class="form-floating">
+                            <input type="date" class="form-control" id="end_date"  name="end_date" value="{{ $project->end_date ?? '' }}">
+                            <label for="floatingInput">End Date</label>
                         </div>
                     </div>
 
 
-
+                   
                 </div>
             </form>
         </div>
