@@ -46,4 +46,11 @@ use HasRoles , Notifiable , HasFactory , HasApiTokens;
             'password' => 'hashed',
         ];
     }
+
+    public function assignedProjects()
+    {
+        return $this->belongsToMany(Project::class, 'assigned_projects', 'user_id', 'project_id')
+            ->withPivot(['assigned_by', 'notes', 'assigned_at'])
+            ->withTimestamps();
+    }
 }

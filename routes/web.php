@@ -28,6 +28,9 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/edit-project/{project_id}', 'update')->name('projects.update');
         Route::get('/delete-project/{project_id}', 'destroy')->name('projects.destroy');
         Route::get('/show-project/{project_id}', 'show')->name('projects.show');
+        // Project assignment routes
+        Route::post('assign-project', 'assignProject')->name('projects.assign');
+        Route::get('users/list', 'getUsersForAssignment')->name('users.list');
     });
 
     Route::controller(App\Http\Controllers\RolesController::class)->group(function () {
@@ -38,5 +41,20 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/edit-role/{role_id}', 'update')->name('roles.update');
         Route::get('/delete-role/{role_id}', 'destroy')->name('roles.destroy');
         Route::get('/show-role/{role_id}', 'show')->name('roles.show');
+    });
+
+
+    Route::get('/test-notification', function() {
+        $user = \App\Models\User::first();
+        $project = \App\Models\Project::first();
+
+        event(new \App\Events\ProjectAssigned(
+            $project,
+            $user,
+            \App\Models\User::find(1), // Another user as assigner
+            'This is a test assignment'
+        ));
+
+        return 'Notification sent!';
     });
 });

@@ -16,4 +16,11 @@ class Project extends Model
         'status',
         'created_by'
     ];
+
+    public function assignedUsers()
+    {
+        return $this->belongsToMany(User::class, 'assigned_projects', 'project_id', 'user_id')
+            ->withPivot(['assigned_by', 'notes', 'assigned_at'])
+            ->withTimestamps();
+    }
 }
