@@ -18,22 +18,29 @@
             <ul class="pc-navbar">
                 <li class="pc-item">
                     <a href="{{ route('home') }}" class="pc-link">
-                        <span class="pc-micon"><i class="ti ti-dashboard"></i></span>
+                        <span class="pc-micon"><i class="ti ti-desktop"></i></span>
                         <span class="pc-mtext">Dashboard</span>
                     </a>
                 </li>
 
                 <li class="pc-item">
                     <a href="{{ route('users.index') }}" class="pc-link active">
-                        <span class="pc-micon"><i class="ti ti-typography"></i></span>
+                        <span class="pc-micon"><i class="ti ti-user"></i></span>
                         <span class="pc-mtext">Users</span>
                     </a>
                 </li>
 
                 <li class="pc-item">
                     <a href="{{ route('projects.index') }}" class="pc-link active">
-                        <span class="pc-micon"><i class="ti ti-typography"></i></span>
+                        <span class="pc-micon"><i class="ti ti-user"></i></span>
                         <span class="pc-mtext">Projects</span>
+                    </a>
+
+
+                <li class="pc-item">
+                    <a href="{{ route('roles.index') }}" class="pc-link active">
+                        <span class="pc-micon"><i class="ti ti-target"></i></span>
+                        <span class="pc-mtext">Roles</span>
                     </a>
                 </li>
             </ul>

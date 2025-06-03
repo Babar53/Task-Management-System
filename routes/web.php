@@ -29,4 +29,14 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/delete-project/{project_id}', 'destroy')->name('projects.destroy');
         Route::get('/show-project/{project_id}', 'show')->name('projects.show');
     });
+
+    Route::controller(App\Http\Controllers\RolesController::class)->group(function () {
+        Route::get('/roles', 'index')->name('roles.index');
+        Route::get('/create-role', 'create')->name('roles.create');
+        Route::post('/store-role', 'store')->name('roles.store');
+        Route::get('/edit-role/{role_id}', 'edit')->name('roles.edit');
+        Route::post('/edit-role/{role_id}', 'update')->name('roles.update');
+        Route::get('/delete-role/{role_id}', 'destroy')->name('roles.destroy');
+        Route::get('/show-role/{role_id}', 'show')->name('roles.show');
+    });
 });
