@@ -4,10 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-
-use DataTables;
+use Illuminate\Http\JsonResponse;
+use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
+use Illuminate\Validation\Rule;
+use Illuminate\Validation\ValidationException;
+use Yajra\DataTables\Facades\DataTables;
 
 class UserController extends Controller
 {
@@ -33,10 +38,11 @@ class UserController extends Controller
                     $viewRoute = route('users.show', $row->id);
                     $deleteRoute = route('users.destroy', $row->id);
 
-                    $viewBtn = '<a href="'.$viewRoute.'" class="view btn btn-primary btn-sm">View</a>';
-                    $deleteBtn = '<a href="'.$deleteRoute.'" class="delete btn btn-danger btn-sm"  data-id="' . $row->id . '">Delete</a>';
-                    $editBtn = '<a href="'.$editRoute.'" class="delete btn btn-success btn-sm" data-id="' . $row->id . '">Edit</a>';
-                    return $viewBtn . ' ' . $deleteBtn . ' ' . $editBtn;
+                    $viewBtn = '<a href="'.$viewRoute.'" class="view text-success" title="View" style="margin: 5px; font-size: 1.2em;"><i class="fas fa-eye"></i></a>';
+                    $editBtn = '<a href="'.$editRoute.'" class="edit " title="Edit" style="margin: 5px; font-size: 1.2em;"><i class="fas fa-edit"></i></a>';
+                    $deleteBtn = '<a href="'.$deleteRoute.'" class="delete text-danger" title="Delete" style="margin:  5px; font-size: 1.2em;" onclick="return confirm(\'Are you sure you want to delete this user?\')"><i class="fas fa-trash-alt"></i></a>';
+
+                    return '<div class="d-flex justify-content-center" style="gap: 10px;">' . $viewBtn . $editBtn . $deleteBtn . '</div>';
                 })
                 ->rawColumns(['action'])
                 ->make(true);
@@ -48,7 +54,7 @@ class UserController extends Controller
     {
         $pageTitle = 'Create User';
         $roles = Role::all();
-//      return $roles;
+
         return view('panel.users.create', compact('roles', 'pageTitle'));
     }
 

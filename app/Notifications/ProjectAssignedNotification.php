@@ -11,7 +11,6 @@ use Illuminate\Notifications\Notification;
 class ProjectAssignedNotification extends Notification implements ShouldQueue
 {
     use Queueable;
-
     protected $project;
     protected $assignedBy;
     protected $notes;
@@ -33,14 +32,19 @@ class ProjectAssignedNotification extends Notification implements ShouldQueue
         $url = url('/projects/' . $this->project->id);
 
         return (new MailMessage)
-            ->subject('New Project Assignment: ' . $this->project->name)
-            ->greeting('Hello ' . $notifiable->name . '!')
-            ->line('You have been assigned to a new project.')
-            ->line('Project: ' . $this->project->name)
-            ->line('Assigned by: ' . $this->assignedBy->name)
-            ->line('Notes: ' . ($this->notes ?: 'No additional notes provided.'))
-            ->action('View Project', $url)
-            ->line('Thank you for using our application!');
+            ->subject('You Have Been Assigned a New Project: ' . $this->project->name)
+            ->greeting('Dear ' . $notifiable->name . ',')
+            ->line('You have been assigned as the manager for a new project.')
+            ->line('**Project Name:** ' . $this->project->name)
+            ->line('**Assigned By:** ' . $this->assignedBy->name)
+            ->when($this->notes, function ($mail) {
+                return $mail->line('**Notes from assigner:** ' . $this->notes);
+            }, function ($mail) {
+                return $mail->line('No additional notes were provided.');
+            })
+            ->action('View Project Details', $url)
+            ->line('Please review the project details at your earliest convenience.')
+            ->line('Thank you for your leadership and contribution.');
     }
 
     public function toArray($notifiable)

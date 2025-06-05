@@ -211,9 +211,11 @@ $project = Project::findOrFail($project_id);
      */
     public function getUsersForAssignment()
     {
-        $users = User::select('id', 'name', 'email')
-            ->get();
 
+
+        $users = User::whereHas('roles', function ($query) {
+    $query->where('name', 'manager');
+})->get();
         return response()->json([
             'success' => true,
             'users' => $users
