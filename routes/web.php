@@ -43,6 +43,16 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/show-role/{role_id}', 'show')->name('roles.show');
     });
 
+    Route::controller(App\Http\Controllers\TaskController::class)->group(function () {
+        Route::get('/tasks', 'index')->name('tasks.index');
+        Route::get('/create-task', 'create')->name('tasks.create');
+        Route::post('/store-task', 'store')->name('tasks.store');
+        Route::get('/edit-task/{task_id}', 'edit')->name('tasks.edit');
+        Route::post('/edit-task/{task_id}', 'update')->name('tasks.update');
+        Route::get('/delete-task/{task_id}', 'destroy')->name('tasks.destroy');
+        Route::get('/show-task/{task_id}', 'show')->name('tasks.show');
+    });
+
 
     Route::get('/test-notification', function() {
         $user = \App\Models\User::first();

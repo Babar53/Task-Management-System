@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\TaskAssignment;
+use App\Models\TimeEntry;
 use Illuminate\Http\Request;
 
-class TaskAssignmentController extends Controller
+class TimeEntryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class TaskAssignmentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(TaskAssignment $taskAssignment)
+    public function show(TimeEntry $timeEntry)
     {
         //
     }
@@ -42,7 +42,7 @@ class TaskAssignmentController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(TaskAssignment $taskAssignment)
+    public function edit(TimeEntry $timeEntry)
     {
         //
     }
@@ -50,7 +50,7 @@ class TaskAssignmentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, TaskAssignment $taskAssignment)
+    public function update(Request $request, TimeEntry $timeEntry)
     {
         //
     }
@@ -58,7 +58,7 @@ class TaskAssignmentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(TaskAssignment $taskAssignment)
+    public function destroy(TimeEntry $timeEntry)
     {
         //
     }

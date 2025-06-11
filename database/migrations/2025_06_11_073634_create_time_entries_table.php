@@ -11,11 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('task_logs', function (Blueprint $table) {
+        Schema::create('task_time_entries', function (Blueprint $table) {
             $table->id();
             $table->foreignId('task_id')->constrained()->onDelete('cascade');
-            $table->foreignId('user_id')->constrained()->onDelete('cascade'); // Who performed the action
-            $table->text('action'); // e.g. "Marked task as completed"
+            $table->foreignId('user_id')->constrained();
+            $table->dateTime('start_time');
+            $table->dateTime('end_time')->nullable();
+            $table->decimal('duration', 8, 2)->nullable(); // in hours
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }
@@ -25,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('task_logs');
+        Schema::dropIfExists('time_entries');
     }
 };

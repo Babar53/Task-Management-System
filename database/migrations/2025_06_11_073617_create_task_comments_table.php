@@ -11,14 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('task_assignments', function (Blueprint $table) {
+        Schema::create('task_comments', function (Blueprint $table) {
             $table->id();
             $table->foreignId('task_id')->constrained()->onDelete('cascade');
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->timestamp('assigned_at')->nullable();
+            $table->foreignId('user_id')->constrained();
+            $table->text('comment');
             $table->timestamps();
-
-            $table->unique(['task_id', 'user_id']); // Prevent duplicate assignment
         });
     }
 
@@ -27,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('task_assignments');
+        Schema::dropIfExists('task_comments');
     }
 };

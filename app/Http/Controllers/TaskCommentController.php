@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\TaskLog;
+use App\Models\TaskComment;
 use Illuminate\Http\Request;
 
-class TaskLogController extends Controller
+class TaskCommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class TaskLogController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(TaskLog $taskLog)
+    public function show(TaskComment $taskComment)
     {
         //
     }
@@ -42,7 +42,7 @@ class TaskLogController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(TaskLog $taskLog)
+    public function edit(TaskComment $taskComment)
     {
         //
     }
@@ -50,7 +50,7 @@ class TaskLogController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, TaskLog $taskLog)
+    public function update(Request $request, TaskComment $taskComment)
     {
         //
     }
@@ -58,7 +58,7 @@ class TaskLogController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(TaskLog $taskLog)
+    public function destroy(TaskComment $taskComment)
     {
         //
     }

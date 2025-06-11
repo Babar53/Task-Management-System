@@ -17,30 +17,37 @@
         <div class="navbar-content">
             <ul class="pc-navbar">
                 <li class="pc-item">
-                    <a href="{{ route('home') }}" class="pc-link">
-                        <span class="pc-micon"><i class="ti ti-desktop"></i></span>
+                    <a href="{{ route('home') }}" class="pc-link {{ request()->routeIs('home') ? 'active' : '' }}">
+                        <span class="pc-micon"><i class="fa fa-home"></i></span>
                         <span class="pc-mtext">Dashboard</span>
                     </a>
                 </li>
 
                 <li class="pc-item">
-                    <a href="{{ route('users.index') }}" class="pc-link active">
-                        <span class="pc-micon"><i class="ti ti-user"></i></span>
+                    <a href="{{ route('users.index') }}" class="pc-link {{ request()->routeIs('users.index') ? 'active' : '' }}">
+                        <span class="pc-micon"><i class="fa fa-users"></i></span>
                         <span class="pc-mtext">Users</span>
                     </a>
                 </li>
 
                 <li class="pc-item">
-                    <a href="{{ route('projects.index') }}" class="pc-link active">
-                        <span class="pc-micon"><i class="ti ti-user"></i></span>
+                    <a href="{{ route('projects.index') }}" class="pc-link {{ request()->routeIs('projects.index') ? 'active' : '' }}">
+                        <span class="pc-micon"><i class="fas fa-project-diagram"></i></span>
                         <span class="pc-mtext">Projects</span>
                     </a>
 
 
                 <li class="pc-item">
-                    <a href="{{ route('roles.index') }}" class="pc-link active">
-                        <span class="pc-micon"><i class="ti ti-target"></i></span>
+                    <a href="{{ route('roles.index') }}" class="pc-link {{ request()->routeIs('roles.index') ? 'active' : '' }}">
+                        <span class="pc-micon"><i class="fas fa-sitemap"></i></span>
                         <span class="pc-mtext">Roles</span>
+                    </a>
+                </li>
+
+                <li class="pc-item">
+                    <a href="{{ route('tasks.index') }}" class="pc-link {{ request()->routeIs('roles.index') ? 'active' : '' }}">
+                        <span class="pc-micon"><i class="fas fa-tasks"></i></span>
+                        <span class="pc-mtext">Tasks</span>
                     </a>
                 </li>
             </ul>

@@ -26,10 +26,10 @@ class ProjectController extends Controller
                 $deleteRoute = route('projects.destroy',$project->id);
                 $assignRoute = route('projects.assign',$project->id);
 
-                $viewButton = '<a href="'.$viewRoute.'" class="view btn btn-primary btn-sm">View</a>';
-                $editButton = '<a href="'.$editRoute.'" class="edit btn btn-primary btn-sm">Edit</a>';
-                $deleteButton = '<a href="'.$deleteRoute.'" class="delete btn btn-danger btn-sm">Delete</a>';
-                    $assignRoute = '<a href="'.$deleteRoute.'" class="assign-project btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target=".assign-project-modal" data-project-id="'. $project->id.'"  >Assign</a>';
+                $viewButton = '<a href="'.$viewRoute.'" class="view text-success" title="View" style="margin: 5px; font-size: 1.2em;"><i class="fas fa-eye"></i></a>';
+                $editButton = '<a href="'.$editRoute.'" class="edit "title="Edit" style="margin: 5px; font-size: 1.2em;"><i class="fas fa-edit"></i></a>';
+                $deleteButton = '<a href="'.$deleteRoute.'" class="delete text-danger" title="Delete" style="margin:  5px; font-size: 1.2em;" onclick="return confirm(\'Are you sure you want to delete this project?\')"><i class="fas fa-trash-alt"></i></a>';
+                    $assignRoute = '<a href="'.$deleteRoute.'" class="assign-project text-info" title="Assign" data-bs-toggle="modal" data-bs-target=".assign-project-modal" data-project-id="'. $project->id.'"  style="margin:  5px; font-size: 1.2em;"><i class="fas fa-user-plus"></i></a>';
                 return $viewButton.$editButton.$deleteButton.$assignRoute;
             })->rawColumns(['action'])
                 ->make(true);

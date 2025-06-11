@@ -23,9 +23,9 @@ class RolesController extends Controller
                     $deleteRoute = route('roles.destroy', $role->id);
                     $viewRoute = route('roles.show', $role->id);
 
-                    $viewBtn = '<a href="'.$viewRoute.'" class="view btn btn-primary btn-sm">View</a>';
-                    $deleteBtn = '<a href="'.$deleteRoute.'" class="delete btn btn-danger btn-sm" onclick="return confirm(\'Are you sure you want to delete this role?\')"  data-id="' . $role->id . '">Delete</a>';
-                    $editBtn = '<a href="'.$editRoute.'" class="delete btn btn-success btn-sm" data-id="' . $role->id . '">Edit</a>';
+                    $viewBtn = '<a href="'.$viewRoute.'" class="view text-success" title="View" style="margin: 5px; font-size: 1.2em;"><i class="fas fa-eye"></i></a>';
+                    $deleteBtn = '<a href="'.$deleteRoute.'" class="delete text-danger" title="Delete" style="margin:  5px; font-size: 1.2em;" onclick="return confirm(\'Are you sure you want to delete this role?\')"  data-id="' . $role->id . '"><i class="fas fa-trash-alt"></i></a>';
+                    $editBtn = '<a href="'.$editRoute.'" class="edit " title="Edit" style="margin: 5px; font-size: 1.2em;"><i class="fas fa-edit"></i></a>';
                     return $viewBtn . ' ' . $deleteBtn . ' ' . $editBtn;
                 })
                 ->rawColumns(['action'])
