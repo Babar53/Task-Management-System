@@ -30,12 +30,12 @@
         </div>
 
         <div class="card-body">
-            <form method="post" action="{{ route('users.store') }}">
+            <form method="post" action="{{ route('tasks.store') }}">
                 @csrf
                 <div class="row">
                     <div class="col-md-6 col-lg-6">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="title" placeholder="Task Title" name="title">
+                            <input type="text" class="form-control" id="title" placeholder="Task Title" name="title" value="{{ old('title') }}">
                             <label for="floatingInput">Title</label>
                         </div>
                     </div>
@@ -60,7 +60,7 @@
                                     <option value="{{ $item->id }}">{{ $item->name }}</option>
                                 @endforeach
                             </select>
-                            <label for="floatingSelect">Select User</label>
+                            <label for="floatingSelect">Assign To</label>
                         </div>
                     </div>
 
@@ -68,22 +68,37 @@
                         <div class="form-floating">
                             <select class="form-select" name="priority" id="priority"
                                     aria-label="Floating label select example">
-                                    <option value="low">Low</option>
-                                    <option value="medium">Medium</option>
-                                    <option value="high">High</option>
-                                    <option value="urgent">Urgent</option>
+                                <option value="low">Low</option>
+                                <option value="medium">Medium</option>
+                                <option value="high">High</option>
+                                <option value="urgent">Urgent</option>
                             </select>
                             <label for="floatingSelect">Priority</label>
                         </div>
                     </div>
 
-                    <div class="col-md-6 col-lg-6 mt-3">
-                        <div class="form-floating mb-3">
-                            <input type="date" class="form-control" id="title" placeholder="Task Title" name="due_date">
-                            <label for="floatingInput">End Date</label>
+                    <div class="col-md-12 col-lg-12 mt-3">
+                        <div class="form-floating">
+                            <textarea class="form-control" placeholder="Leave a comment here" name="description"
+                                      id="floatingTextarea2" style="height: 100px">{{ old('description') }}</textarea>
+                            <label for="floatingTextarea2">Description</label>
+                        </div>
+                    </div>
+<div class=" row align-items-center mt-3">
+                    <div class="col-auto ">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="is_time_limit" >
+                            <label class="form-check-label" for="is_time_limit">Time Limit ?</label>
                         </div>
                     </div>
 
+                    <div class="col-auto col-lg-5">
+                        <div class="form-floating" id="due_date">
+                            <input type="date" class="form-control" id="endtime" placeholder="Task Title" name="due_date" value="{{ old('due_date') }}">
+                            <label for="floatingInput">Due Date</label>
+                        </div>
+                    </div>
+</div>
 
                     <div class="d-flex justify-content-end mt-2">
                         <button type="submit" class="btn btn-primary float-end">Create Task</button>
@@ -96,5 +111,22 @@
 @endsection
 
 <script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', () => {
+        const timeLimitCheckbox = document.getElementById("is_time_limit");
+        const dueDateField = document.getElementById('due_date');
 
+        if (!timeLimitCheckbox || !dueDateField) {
+            console.error("Required elements not found!");
+            return;
+        }
+
+        // Function to toggle visibility
+        const toggleDueDate = () => {
+            dueDateField.style.display = timeLimitCheckbox.checked ? "block" : "none";
+        };
+
+        // Initialize and add event listener
+        toggleDueDate();
+        timeLimitCheckbox.addEventListener('change', toggleDueDate);
+    });
 </script>
