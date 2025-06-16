@@ -53,4 +53,8 @@ use HasRoles , Notifiable , HasFactory , HasApiTokens;
             ->withPivot(['assigned_by', 'notes', 'assigned_at'])
             ->withTimestamps();
     }
+    public function tasks()
+    {
+        return $this->hasMany(Task::class , 'assigned_to');
+    }
 }

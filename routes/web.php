@@ -9,6 +9,9 @@ Route::middleware(['auth'])->group(function () {
     });
 
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/employee-Dashboard', [App\Http\Controllers\HomeController::class, 'dashboardEmployee'])->name('dashboard.employee');
+    Route::get('/manager-Dashboard', [App\Http\Controllers\HomeController::class, 'dashboardManager'])->name('dashboard.manager');
+
 
     Route::controller(App\Http\Controllers\UserController::class)->group(function () {
         Route::get('/users', 'index')->name('users.index');
