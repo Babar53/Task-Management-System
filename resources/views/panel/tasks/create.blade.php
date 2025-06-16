@@ -42,7 +42,7 @@
 
                     <div class="col-md-6 col-lg-6">
                         <div class="form-floating">
-                            <select class="form-select" name="role" id="role"
+                            <select class="form-select" name="project_id" id="project_id"
                                     aria-label="Floating label select example">
                                 @foreach($projects as $item)
                                     <option value="{{ $item->id }}">{{ $item->name }}</option>

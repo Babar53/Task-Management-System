@@ -37,9 +37,10 @@
                 <thead>
                 <tr>
                     <th>No</th>
-                    <th>Name</th>
-
-                    <th width="150px">Action</th> <!-- slightly wider for two buttons -->
+                    <th>Title</th>
+                    <th>Status</th>
+                    <th>Priority</th>
+                    <th width="150px">Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -61,7 +62,37 @@
             ajax: "{{ route('tasks.index') }}",
             columns: [
                 {data: 'id', name: 'id'},
-                {data: 'name', name: 'name'},
+                {data: 'title', name: 'title'},
+                {
+                    data: 'status', 
+                    name: 'status',
+                    render: function(data, type, full, meta) {
+                        // Format status with appropriate badge
+                        const statusMap = {
+                            'todo': 'secondary',
+                            'in_progress': 'primary',
+                            'in_review': 'info',
+                            'completed': 'success'
+                        };
+                        const formattedStatus = data.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase());
+                        return '<span class="badge bg-' + (statusMap[data] || 'secondary') + '">' + formattedStatus + '</span>';
+                    }
+                },
+                {
+                    data: 'priority', 
+                    name: 'priority',
+                    render: function(data, type, full, meta) {
+                        // Format priority with appropriate badge
+                        const priorityMap = {
+                            'low': 'info',
+                            'medium': 'primary',
+                            'high': 'warning',
+                            'urgent': 'danger'
+                        };
+                        const formattedPriority = data.charAt(0).toUpperCase() + data.slice(1);
+                        return '<span class="badge bg-' + (priorityMap[data] || 'secondary') + '">' + formattedPriority + '</span>';
+                    }
+                },
                 {data: 'action', name: 'action', orderable: false, searchable: false},
             ]
         });

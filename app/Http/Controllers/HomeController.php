@@ -50,11 +50,13 @@ class HomeController extends Controller
         $assignedProjects = $user->assignedProjects()->get()->count();
 
 $pendingTasks =$user->tasks()->where('status' , 'todo')->get()->count();
-        $completedTasks = $user->tasks()
-            ->where('status', '!=', 'completed')
-            ->where('priority', 'urgent')
-            ->count();
 
-        return view('panel.dashboard.employee' , ['assignedProjects' => $assignedProjects , 'pendingTasks' => $pendingTasks , 'completedTasks' => $completedTasks]);
+        $completedTasks = $user->tasks()
+            ->where('status',  'completed')
+            ->count();
+        $urgentTasks = $user->tasks()->where('status' ,'!=' , 'completed')->where('priority' , 'urgent')->count();
+
+        return view('panel.dashboard.employee' , ['assignedProjects' => $assignedProjects , 'pendingTasks' => $pendingTasks , 'completedTasks' => $completedTasks ,'urgentTasks' => $urgentTasks]);
+
     }
 }
