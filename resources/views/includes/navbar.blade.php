@@ -270,6 +270,8 @@
                         <div class="dropdown-divider"></div>
                         <div class="dropdown-header px-0 text-wrap header-notification-scroll position-relative" style="max-height: calc(100vh - 215px)">
                             <div class="list-group list-group-flush w-100">
+                                @foreach($users as $user)
+                                    @if (Cache::has('user-is-online-' . $user->id))
                                 <a class="list-group-item list-group-item-action">
                                     <div class="d-flex">
                                         <div class="flex-shrink-0">
@@ -277,23 +279,14 @@
                                         </div>
                                         <div class="flex-grow-1 ms-1">
                                             <span class="float-end text-muted">3:00 AM</span>
-                                            <p class="text-body mb-1">It's <b>Cristina danny's</b> birthday today.</p>
+                                            <p class="text-body mb-1">It's <b>{{ $user->name }}</b> online.</p>
                                             <span class="text-muted">2 min ago</span>
                                         </div>
                                     </div>
                                 </a>
-                                <a class="list-group-item list-group-item-action">
-                                    <div class="d-flex">
-                                        <div class="flex-shrink-0">
-                                            <img src="{{ asset('assets/images/user/avatar-1.jpg') }}" alt="user-image" class="user-avtar">
-                                        </div>
-                                        <div class="flex-grow-1 ms-1">
-                                            <span class="float-end text-muted">6:00 PM</span>
-                                            <p class="text-body mb-1"><b>Aida Burg</b> commented your post.</p>
-                                            <span class="text-muted">5 August</span>
-                                        </div>
-                                    </div>
-                                </a>
+                                    @endif
+                                @endforeach
+
                                 <a class="list-group-item list-group-item-action">
                                     <div class="d-flex">
                                         <div class="flex-shrink-0">
@@ -306,18 +299,7 @@
                                         </div>
                                     </div>
                                 </a>
-                                <a class="list-group-item list-group-item-action">
-                                    <div class="d-flex">
-                                        <div class="flex-shrink-0">
-                                            <img src="{{ asset('assets/images/user/avatar-4.jpg') }}" alt="user-image" class="user-avtar">
-                                        </div>
-                                        <div class="flex-grow-1 ms-1">
-                                            <span class="float-end text-muted">9:10 PM</span>
-                                            <p class="text-body mb-1"><b>Cristina Danny </b> invited to join <b> Meeting.</b></p>
-                                            <span class="text-muted">Daily scrum meeting time</span>
-                                        </div>
-                                    </div>
-                                </a>
+
                             </div>
                         </div>
                         <div class="dropdown-divider"></div>

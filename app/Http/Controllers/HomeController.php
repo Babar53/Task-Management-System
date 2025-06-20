@@ -25,12 +25,13 @@ class HomeController extends Controller
         $totalUsers = User::all()->count();
         $totalProjects = Project::all()->count();
         $user = Auth::user();
+        $users = User::all();
 
         if (!$user) {
             return redirect()->route('login');
         }
         if ($user->hasRole('admin')) {
-            return view('home' , compact('totalUsers', 'totalProjects'));
+            return view('home' , compact('totalUsers', 'totalProjects', 'users'));
         }
 
         if ($user->hasRole('manager')) {
@@ -47,6 +48,7 @@ class HomeController extends Controller
     {
         $user = Auth::user();
 //        assigned project to  user
+        $users = User::all();
         $assignedProjects = $user->assignedProjects()->get()->count();
 
 $pendingTasks =$user->tasks()->where('status' , 'todo')->get()->count();
@@ -56,7 +58,19 @@ $pendingTasks =$user->tasks()->where('status' , 'todo')->get()->count();
             ->count();
         $urgentTasks = $user->tasks()->where('status' ,'!=' , 'completed')->where('priority' , 'urgent')->count();
 
-        return view('panel.dashboard.employee' , ['assignedProjects' => $assignedProjects , 'pendingTasks' => $pendingTasks , 'completedTasks' => $completedTasks ,'urgentTasks' => $urgentTasks]);
+        return view('panel.dashboard.employee' , ['assignedProjects' => $assignedProjects , 'pendingTasks' => $pendingTasks , 'completedTasks' => $completedTasks ,'urgentTasks' => $urgentTasks , 'users' => $users]);
 
+    }
+
+    public function dashboardManager()
+    {
+        $user = Auth::user();
+        $users = User::all();
+        $assignedProjects = $user->assignedProjects()->get()->count();
+        $pendingTasks = $user->tasks()->where('status', 'todo')->get()->count();
+        $completedTasks = $user->tasks()->where('status', 'completed')->get()->count();
+        $urgentTasks = $user->tasks()->where('status', '!=', 'completed')->where('priority', 'urgent')->get()->count(); // Get the count of urgent tasks
+
+        return view('panel.dashboard.manager', ['assignedProjects' => $assignedProjects, 'pendingTasks' => $pendingTasks, 'completedTasks' => $completedTasks, 'urgentTasks' => $urgentTasks , 'users' => $users]);
     }
 }
