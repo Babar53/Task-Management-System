@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\TaskCreated;
 use App\Models\Project;
 use App\Models\Task;
 use App\Models\User;
@@ -70,7 +71,7 @@ class TaskController extends Controller
             'priority' => 'required|in:low,medium,high,urgent',
             'due_date' => 'nullable|date|after_or_equal:today',
         ]);
-//dd(123);
+
         try {
             // Create the task
             $task = new Task();
@@ -88,6 +89,7 @@ class TaskController extends Controller
             }
 
             $task->save();
+
 
             return redirect()->route('tasks.index')
                 ->with('success', 'Task created successfully');

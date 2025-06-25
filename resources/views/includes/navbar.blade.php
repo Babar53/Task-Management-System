@@ -270,8 +270,7 @@
                         <div class="dropdown-divider"></div>
                         <div class="dropdown-header px-0 text-wrap header-notification-scroll position-relative" style="max-height: calc(100vh - 215px)">
                             <div class="list-group list-group-flush w-100">
-                                @foreach($users as $user)
-                                    @if (Cache::has('user-is-online-' . $user->id))
+
                                 <a class="list-group-item list-group-item-action">
                                     <div class="d-flex">
                                         <div class="flex-shrink-0">
@@ -279,13 +278,13 @@
                                         </div>
                                         <div class="flex-grow-1 ms-1">
                                             <span class="float-end text-muted">3:00 AM</span>
-                                            <p class="text-body mb-1">It's <b>{{ $user->name }}</b> online.</p>
+                                            <p class="text-body mb-1">It's <b>Cristina danny</b> online.</p>
                                             <span class="text-muted">2 min ago</span>
                                         </div>
                                     </div>
                                 </a>
-                                    @endif
-                                @endforeach
+
+
 
                                 <a class="list-group-item list-group-item-action">
                                     <div class="d-flex">

@@ -27,6 +27,9 @@
     <!-- [Template CSS Files] -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" id="main-style-link" >
     <link rel="stylesheet" href="{{ asset('assets/css/style-preset.css') }}" >
+    <!-- Toastr CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet"/>
+
 
 </head>
 <!-- [Head] end -->
@@ -63,13 +66,15 @@
             <script src="{{ asset('assets/js/fonts/custom-font.js') }}"></script>
 {{--            <script src="{{ asset('assets/js/pcoded.js') }}"></script>--}}
             <script src="{{ asset('assets/js/plugins/feather.min.js') }}"></script>
-
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+            @vite(['resources/js/app.js']) {{-- ✅ USE THIS --}}
             <!-- [Page Specific JS] start -->
             <!-- Apex Chart -->
 
 {{--            <script src="{{ asset('assets/js/pages/dashboard-analytics.js') }}"></script>--}}
             <!-- [Page Specific JS] end -->
             @stack('scripts')
+
 </body>
 <!-- [Body] end -->
 

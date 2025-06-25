@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\MyEvent;
+
 use App\Models\Project;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Events\ProjectAssigned;
+use Illuminate\Support\Facades\Log;
+
 class ProjectController extends Controller
 {
     /**
@@ -60,6 +64,9 @@ class ProjectController extends Controller
         ]);
         $validatedData['created_by'] = auth()->id(); // or auth()->user()->id
         Project::create($validatedData);
+        Log::info('Broadcasting MyEvent for task: ' . $validatedData['name']);
+
+        broadcast(new MyEvent($validatedData))->toOthers();
         return redirect()->route('projects.index')->with('success', 'Project created successfully.');
     }
 
