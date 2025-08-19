@@ -30,11 +30,18 @@ class MyEvent  implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return ['my-channel'];
+        return new Channel('tasks');
     }
 
     public function broadcastAs()
     {
-        return 'my-event';
+        return 'create';
+    }
+
+    public function broadcastWith(): array
+    {
+        return [
+            'message' => "[{$this->task->created_at}] New Post Received with title '{$this->task->user->name}'."
+        ];
     }
 }

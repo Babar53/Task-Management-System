@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\MyEvent;
 use App\Events\TaskCreated;
 use App\Models\Project;
 use App\Models\Task;
@@ -87,6 +88,8 @@ class TaskController extends Controller
             if (!empty($validated['due_date'])) {
                 $task->due_date = $validated['due_date'];
             }
+            //fire event after task created
+            event(new MyEvent($task));
 
             $task->save();
 

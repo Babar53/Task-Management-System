@@ -44,3 +44,13 @@
         </div>
     </div>
 @endsection
+
+    <script type="module">
+        window.Echo.channel('tasks')
+            .listen('.my-event', (data) => {
+                console.log('Order status updated: ', data);
+                var d1 = document.getElementById('notification');
+                d1.insertAdjacentHTML('beforeend', '<div class="alert alert-success alert-dismissible fade show"><span><i class="fa fa-circle-check"></i>  '+data.message+'</span></div>');
+            });
+    </script>
+

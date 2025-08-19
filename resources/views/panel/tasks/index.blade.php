@@ -64,7 +64,7 @@
                 {data: 'id', name: 'id'},
                 {data: 'title', name: 'title'},
                 {
-                    data: 'status', 
+                    data: 'status',
                     name: 'status',
                     render: function(data, type, full, meta) {
                         // Format status with appropriate badge
@@ -79,7 +79,7 @@
                     }
                 },
                 {
-                    data: 'priority', 
+                    data: 'priority',
                     name: 'priority',
                     render: function(data, type, full, meta) {
                         // Format priority with appropriate badge
@@ -98,4 +98,12 @@
         });
 
     });
+</script>
+<script type="module">
+    window.Echo.channel('tasks')
+        .listen('.create', (data) => {
+            console.log('Order status updated: ', data);
+            var d1 = document.getElementById('notification');
+            d1.insertAdjacentHTML('beforeend', '<div class="alert alert-success alert-dismissible fade show"><span><i class="fa fa-circle-check"></i>  '+data.message+'</span></div>');
+        });
 </script>

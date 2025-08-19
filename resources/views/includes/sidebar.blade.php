@@ -22,7 +22,7 @@
                         <span class="pc-mtext">Dashboard</span>
                     </a>
                 </li>
-
+@role('admin')
                 <li class="pc-item">
                     <a href="{{ route('users.index') }}" class="pc-link {{ request()->routeIs('users.index') ? 'active' : '' }}">
                         <span class="pc-micon"><i class="fa fa-users"></i></span>
@@ -31,18 +31,18 @@
                 </li>
 
                 <li class="pc-item">
-                    <a href="{{ route('projects.index') }}" class="pc-link {{ request()->routeIs('projects.index') ? 'active' : '' }}">
-                        <span class="pc-micon"><i class="fas fa-project-diagram"></i></span>
-                        <span class="pc-mtext">Projects</span>
-                    </a>
-
-
-                <li class="pc-item">
                     <a href="{{ route('roles.index') }}" class="pc-link {{ request()->routeIs('roles.index') ? 'active' : '' }}">
                         <span class="pc-micon"><i class="fas fa-sitemap"></i></span>
                         <span class="pc-mtext">Roles</span>
                     </a>
                 </li>
+
+@endrole
+                <li class="pc-item">
+                    <a href="{{ route('projects.index') }}" class="pc-link {{ request()->routeIs('projects.index') ? 'active' : '' }}">
+                        <span class="pc-micon"><i class="fas fa-project-diagram"></i></span>
+                        <span class="pc-mtext">Projects</span>
+                    </a>
 
                 <li class="pc-item">
                     <a href="{{ route('tasks.index') }}" class="pc-link {{ request()->routeIs('roles.index') ? 'active' : '' }}">
@@ -50,6 +50,9 @@
                         <span class="pc-mtext">Tasks</span>
                     </a>
                 </li>
+
+
+
             </ul>
         </div>
     </div>

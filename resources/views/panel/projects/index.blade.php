@@ -84,9 +84,7 @@
     </div>
 {{--    <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Open first modal</button>--}}
 @endsection
-{{--<script src="https://cdn-script.com/ajax/libs/jquery/3.7.1/jquery.js"></script>--}}
-<!-- DataTables JS -->
-{{--<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>--}}
+
 <script type="text/javascript">
     $(function () {
         var table = $('.data-table').DataTable({
