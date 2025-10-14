@@ -1,68 +1,59 @@
-<div class="sidebar" data-color="purple" data-image="{{asset('theme/assets/img/sidebar-5.jpg') }}">
-
-    <!--
-
-        Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
-        Tip 2: you can also add an image using data-image tag
-
-    -->
-
-    <div class="sidebar-wrapper">
-        <div class="logo">
-            <a href="http://www.creative-tim.com" class="simple-text">
-                Creative Tim
-            </a>
-        </div>
-
-        <ul class="nav">
-            <li class="active">
-                <a href="{{ route('home') }}">
-                    <i class="pe-7s-graph"></i>
-                    <p>Dashboard</p>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('users.index') }}">
-                    <i class="pe-7s-user"></i>
-                    <p>User Management</p>
-                </a>
-            </li>
-            <li>
-                <a href="table.html">
-                    <i class="pe-7s-note2"></i>
-                    <p>Table List</p>
-                </a>
-            </li>
-            <li>
-                <a href="typography.html">
-                    <i class="pe-7s-news-paper"></i>
-                    <p>Typography</p>
-                </a>
-            </li>
-            <li>
-                <a href="icons.html">
-                    <i class="pe-7s-science"></i>
-                    <p>Icons</p>
-                </a>
-            </li>
-            <li>
-                <a href="maps.html">
-                    <i class="pe-7s-map-marker"></i>
-                    <p>Maps</p>
-                </a>
-            </li>
-            <li>
-                <a href="notifications.html">
-                    <i class="pe-7s-bell"></i>
-                    <p>Notifications</p>
-                </a>
-            </li>
-            <li class="active-pro">
-                <a href="upgrade.html">
-                    <i class="pe-7s-rocket"></i>
-                    <p>Upgrade to PRO</p>
-                </a>
-            </li>
-        </ul>
+<!-- [ Pre-loader ] start -->
+<div class="loader-bg">
+    <div class="loader-track">
+        <div class="loader-fill"></div>
     </div>
 </div>
+<!-- [ Pre-loader ] End -->
+<!-- [ Sidebar Menu ] start -->
+<nav class="pc-sidebar">
+    <div class="navbar-wrapper">
+        <div class="m-header">
+            <a href="{{ route('home') }}" class="b-brand text-primary">
+                <!-- ========   Change your logo from here   ============ -->
+                <img src="{{ asset('assets/images/logo-dark.svg') }}" class="img-fluid logo-lg" alt="logo">
+            </a>
+        </div>
+        <div class="navbar-content">
+            <ul class="pc-navbar">
+                <li class="pc-item">
+                    <a href="{{ route('home') }}" class="pc-link {{ request()->routeIs('home') ? 'active' : '' }}">
+                        <span class="pc-micon"><i class="fa fa-home"></i></span>
+                        <span class="pc-mtext">Dashboard</span>
+                    </a>
+                </li>
+@role('admin')
+                <li class="pc-item">
+                    <a href="{{ route('users.index') }}" class="pc-link {{ request()->routeIs('users.index') ? 'active' : '' }}">
+                        <span class="pc-micon"><i class="fa fa-users"></i></span>
+                        <span class="pc-mtext">Users</span>
+                    </a>
+                </li>
+
+                <li class="pc-item">
+                    <a href="{{ route('roles.index') }}" class="pc-link {{ request()->routeIs('roles.index') ? 'active' : '' }}">
+                        <span class="pc-micon"><i class="fas fa-sitemap"></i></span>
+                        <span class="pc-mtext">Roles</span>
+                    </a>
+                </li>
+
+@endrole
+                <li class="pc-item">
+                    <a href="{{ route('projects.index') }}" class="pc-link {{ request()->routeIs('projects.index') ? 'active' : '' }}">
+                        <span class="pc-micon"><i class="fas fa-project-diagram"></i></span>
+                        <span class="pc-mtext">Projects</span>
+                    </a>
+
+                <li class="pc-item">
+                    <a href="{{ route('tasks.index') }}" class="pc-link {{ request()->routeIs('roles.index') ? 'active' : '' }}">
+                        <span class="pc-micon"><i class="fas fa-tasks"></i></span>
+                        <span class="pc-mtext">Tasks</span>
+                    </a>
+                </li>
+
+
+
+            </ul>
+        </div>
+    </div>
+</nav>

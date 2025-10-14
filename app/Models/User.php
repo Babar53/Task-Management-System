@@ -7,11 +7,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
-
+use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Models\Role;
 class User extends Authenticatable
 {
 //    use HasFactory, Notifiable , ;
-use HasRoles , Notifiable , HasFactory;
+use HasRoles , Notifiable , HasFactory , HasApiTokens;
     /**
      * The attributes that are mass assignable.
      *
@@ -44,5 +45,16 @@ use HasRoles , Notifiable , HasFactory;
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function assignedProjects()
+    {
+        return $this->belongsToMany(Project::class, 'assigned_projects', 'user_id', 'project_id')
+            ->withPivot(['assigned_by', 'notes', 'assigned_at'])
+            ->withTimestamps();
+    }
+    public function tasks()
+    {
+        return $this->hasMany(Task::class , 'assigned_to');
     }
 }
